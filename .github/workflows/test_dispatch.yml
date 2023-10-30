@@ -1,0 +1,9 @@
+on:
+  repository_dispatch:
+  workflow_dispatch:
+
+jobs:
+  dispatch_success:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Test Success"
