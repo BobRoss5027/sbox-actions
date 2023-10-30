@@ -4,7 +4,18 @@ on:
 
 jobs:
   dispatch_success:
+    if: ${{ github.event.client_payload.test_success}}
     runs-on: ubuntu-latest
     steps:
       - run: echo "Test Success"
       - run: echo ${{ github.event.client_payload.message }}
+
+  test_tf:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACC: ${{ github.event.client_payload.aws_acc }}
+      SEC_TEST: ${{ github.event.client_payload.sec_test}}
+    steps:
+      - run: echo "AWS Acc to use - $AWS_ACC"
+      - run: echo "Some secrets - $SEC_TEST"
+  
