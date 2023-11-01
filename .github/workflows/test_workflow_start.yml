@@ -4,6 +4,9 @@ on:
 jobs:
   call-aws:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
     steps:
       - name: Configure AWS credentials # Auth to AWS using OIDC
         uses: aws-actions/configure-aws-credentials@v4
