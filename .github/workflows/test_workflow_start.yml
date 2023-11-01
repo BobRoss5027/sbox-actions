@@ -1,0 +1,13 @@
+on:
+  workflow_dispatch:
+    
+jobs:
+  call-aws:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials # Auth to AWS using OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACC_ID }}:role/${{ secrets.AWS_ROLE }}
+          aws-region: eu-west-2
+      - run: aws stepfunctions start-execution --state-machine-arn arn:aws:states:eu-west-2:335840475404:stateMachine:jit-test-state-eoin --name $( date "%Y%m%d%H%M%S" )-test-exec --input test
