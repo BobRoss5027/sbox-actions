@@ -12,7 +12,7 @@ jobs:
 
   test_tf:
     runs-on: ubuntu-latest
-    name: ${{ env.ACC_NAME }}
+    name: $ACC_NAME
     env:
       AWS_ACC: ${{ github.event.client_payload.aws_acc }}
       SEC_TEST: ${{ github.event.client_payload.sec_test}}
