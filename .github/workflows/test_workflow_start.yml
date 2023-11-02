@@ -4,11 +4,11 @@ on:
       name:
         required: true
         type: string
-        description: "test"
+        description: "Username"
       role:
         required: true
         type: string
-        description: "test"
+        description: "User Role"
     
 jobs:
   call-aws:
