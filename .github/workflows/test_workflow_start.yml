@@ -8,7 +8,7 @@ jobs:
       id-token: write # This is required for requesting the JWT
       contents: read  # This is required for actions/checkout
     steps:
-      - run: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Configure AWS credentials # Auth to AWS using OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
