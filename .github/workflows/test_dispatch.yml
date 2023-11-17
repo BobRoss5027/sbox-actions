@@ -17,8 +17,9 @@ jobs:
       AWS_ACC: ${{ github.event.client_payload.aws_acc }}
       SEC_TEST: ${{ github.event.client_payload.sec_test}}
       ACC_NAME: ${{ github.event.client_payload.acc_name }}
+      AWS_ROLE: ${{ github.event.client_payload.acc_role }}
     steps:
       - run: echo "AWS Acc to use - $AWS_ACC"
-      - run: echo "Some secrets - $SEC_TEST"
       - run: echo "Account to change - $ACC_NAME"
+      - run: echo "Role to manage - $AWS_ROLE"
   
