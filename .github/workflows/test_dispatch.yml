@@ -10,7 +10,7 @@ jobs:
       - run: echo "Test Success"
       - run: echo ${{ github.event.client_payload.message }}
 
-  test_tf:
+  manage_user:
     runs-on: ubuntu-latest
     name: Delete ${{ github.event.client_payload.acc_name }} Perms
     env:
