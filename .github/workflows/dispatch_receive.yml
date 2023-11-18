@@ -1,6 +1,7 @@
 on:
   repository_dispatch:
   workflow_dispatch:
+name: Remove ${{ github.event.client_payload.acc_name }} Permissions
 
 jobs:
   dispatch_success:

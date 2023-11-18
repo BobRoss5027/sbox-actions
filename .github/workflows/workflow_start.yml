@@ -9,6 +9,8 @@ on:
         required: true
         type: string
         description: "User Role"
+
+name: Give ${{ inputs.name }} Permissions
     
 jobs:
   call-aws:
