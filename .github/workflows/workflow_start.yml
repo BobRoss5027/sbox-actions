@@ -10,7 +10,7 @@ on:
         type: string
         description: "User Role"
 
-name: Give ${{ inputs.name }} Permissions
+name: Give User Permissions
     
 jobs:
   call-aws:
