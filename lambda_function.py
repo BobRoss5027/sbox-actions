@@ -39,7 +39,7 @@ def lambda_handler(event, context):
     acc_input=json.loads(event['input'])
     # print(acc_name['first_name'])
 
-    data = '{"event_type":"Remove '+acc_input['username']+' Perms","client_payload":{"acc_name":"'+acc_input['username']+'", "acc_role":"'+acc_input['role']+'","test_success":false,"message":"Test message payload","aws_acc":1234567890,"sec_test":"This is a Secret"}}'
+    data = '{"event_type":"remove_role","client_payload":{"acc_name":"'+acc_input['username']+'", "acc_role":"'+acc_input['role']+'","test_success":false,"message":"Test message payload","aws_acc":1234567890,"sec_test":"This is a Secret"}}'
 
     print(data)
 
