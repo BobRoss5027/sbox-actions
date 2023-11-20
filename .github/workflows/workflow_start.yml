@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        roles: ${{ fromJson(needs.setup.outputs.roles.list) }}
+        roles: ${{ fromJson(needs.setup.outputs.roles_list) }}
     permissions:
       id-token: write # This is required for requesting the JWT
       contents: read  # This is required for actions/checkout
