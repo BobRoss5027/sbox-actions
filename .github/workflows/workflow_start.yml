@@ -19,7 +19,7 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     outputs:
-      projects: ${{ steps.vars.outputs.roles_list }}
+      roles_list: ${{ steps.vars.outputs.roles_list }}
     steps:
       - name: Create an array of roles
         id: vars
