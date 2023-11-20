@@ -11,6 +11,7 @@ on:
         description: "Comma separated list of groups (e.g. group1,group2)"
       project:
         required: true
+        description: "Project user is in"
         type: choice
         options:
           - henosis
