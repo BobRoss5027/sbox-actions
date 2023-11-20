@@ -24,6 +24,7 @@ jobs:
       - name: Create an array of roles
         id: vars
         run: echo "::set-output name=roles_list::$(jq 'split(",")' -Rc <(echo '${{ inputs.roles }}'))"
+      - run: echo ${{ steps.vars.outputs.roles_list }}
   call-aws:
     name: Give ${{ inputs.name }} ${{ matrix.roles }}
     needs: setup
