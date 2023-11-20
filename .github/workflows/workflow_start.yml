@@ -16,6 +16,9 @@ jobs:
   call-aws:
     name: ${{ inputs.name }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        test_jobs: ["job1", "job2"]
     permissions:
       id-token: write # This is required for requesting the JWT
       contents: read  # This is required for actions/checkout
@@ -29,7 +32,7 @@ jobs:
       - name: Replace Name
         run: |
           old=$( cat input.json )
-          replace=${{ inputs.name }}
+          replace=${{ matrix.test_jobs }}
           new=${old/item1/$replace}
           echo $old $new
           echo $new > input.json
