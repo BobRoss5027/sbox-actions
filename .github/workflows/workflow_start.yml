@@ -5,20 +5,32 @@ on:
         required: true
         type: string
         description: "Username"
-      role:
+      roles:
         required: true
         type: string
         description: "User Role"
+        # options:
+          # - dev role
+          # - prod role
 
 name: Give User Permissions
     
 jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      projects: ${{ steps.vars.outputs.roles_list }}
+    steps:
+      - name: Create an array of roles
+        id: vars
+        run: echo "::set-output name=roles_list::$(jq 'split(",")' -Rc <(echo '${{ inputs.roles }}'))"
   call-aws:
-    name: ${{ inputs.name }}
+    name: Give ${{ input.name }} ${{ matrix.roles }}
+    needs: setup
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        test_jobs: ["job1", "job2"]
+        roles: ${{ fromJson(needs.setup.outputs.roles.list) }}
     permissions:
       id-token: write # This is required for requesting the JWT
       contents: read  # This is required for actions/checkout
@@ -32,15 +44,15 @@ jobs:
       - name: Replace Name
         run: |
           old=$( cat input.json )
-          replace=${{ matrix.test_jobs }}
+          replace=${{ inputs.name }}
           new=${old/item1/$replace}
           echo $old $new
           echo $new > input.json
       - name: Replace Role
         run: |
           old=$( cat input.json )
-          replace=${{ inputs.role }}
+          replace=${{ matrix.roles }}
           new=${old/item2/$replace}
           echo $old $new
           echo $new > input.json
-      - run: aws stepfunctions start-execution --state-machine-arn arn:aws:states:eu-west-2:335840475404:stateMachine:jit-test-state-eoin --name actions-test-exec --input file://input.json
+      # - run: aws stepfunctions start-execution --state-machine-arn arn:aws:states:eu-west-2:335840475404:stateMachine:jit-test-state-eoin --name actions-test-exec --input file://input.json
