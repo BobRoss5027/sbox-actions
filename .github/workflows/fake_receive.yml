@@ -1,8 +1,7 @@
 on:
   repository_dispatch:
     types:
-      - test_trigger_false
-  workflow_dispatch:
+      - test_trigger_true
   
 name: Remove Permissions
 
