@@ -22,7 +22,6 @@ jobs:
       - name: Create an array of groups
         id: vars
         run: echo "::set-output name=groups_list::$(jq 'split(",")' -Rc <(echo '${{ inputs.groups }}'))"
-      - run: echo ${{ steps.vars.outputs.groups_list }}
 
   call-aws:
     name: Give ${{ inputs.name }} ${{ matrix.groups }}
