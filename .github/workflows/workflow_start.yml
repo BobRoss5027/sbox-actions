@@ -9,6 +9,13 @@ on:
         required: true
         type: string
         description: "Comma separated list of groups (e.g. group1,group2)"
+      project:
+        required: true
+        type: choice
+        options:
+          - henosis
+          - hr
+          - skyforge
 
 name: Give User Permissions
     
