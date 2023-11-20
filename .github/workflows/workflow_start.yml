@@ -54,4 +54,5 @@ jobs:
           new=${old/item2/$replace}
           echo $old $new
           echo $new > input.json
-      # - run: aws stepfunctions start-execution --state-machine-arn arn:aws:states:eu-west-2:335840475404:stateMachine:jit-test-state-eoin --name actions-test-exec --input file://input.json
+      - name: Execute AWS StepFunction
+        run: aws stepfunctions start-execution --state-machine-arn arn:aws:states:eu-west-2:335840475404:stateMachine:jit-test-state-eoin --name actions-test-exec --input file://input.json
