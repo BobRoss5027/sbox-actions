@@ -25,7 +25,7 @@ jobs:
         id: vars
         run: echo "::set-output name=roles_list::$(jq 'split(",")' -Rc <(echo '${{ inputs.roles }}'))"
   call-aws:
-    name: Give ${{ input.name }} ${{ matrix.roles }}
+    name: Give ${{ inputs.name }} ${{ matrix.roles }}
     needs: setup
     runs-on: ubuntu-latest
     strategy:
