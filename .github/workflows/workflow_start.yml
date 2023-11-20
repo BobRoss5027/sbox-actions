@@ -19,6 +19,7 @@ on:
           - skyforge
 
 name: Give User Permissions
+run-name: Give ${{ inputs.name }} ${{ inputs.groups }}
     
 jobs:
   setup:

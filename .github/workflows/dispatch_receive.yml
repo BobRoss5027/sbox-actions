@@ -1,10 +1,11 @@
 on:
   repository_dispatch:
     types:
-      - test_trigger_false
+      - test_trigger_true
   workflow_dispatch:
   
 name: Remove Permissions
+run-name: Remove ${{ github.event.client_payload.acc_name }} ${{ github.event.client_payload.acc_role }}
 
 jobs:
   dispatch_success:
