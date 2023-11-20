@@ -8,10 +8,7 @@ on:
       groups:
         required: true
         type: string
-        description: "User group"
-        # options:
-          # - dev group
-          # - prod group
+        description: "Comma separated list of groups (e.g. group1,group2)"
 
 name: Give User Permissions
     
