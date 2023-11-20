@@ -17,6 +17,9 @@ on:
           - henosis
           - hr
           - skyforge
+  repository_dispatch:
+    types:
+      - give_role
 
 name: Give User Permissions
 run-name: Give ${{ inputs.name }} ${{ inputs.groups }}
