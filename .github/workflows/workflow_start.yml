@@ -46,7 +46,7 @@ jobs:
       - name: Configure AWS credentials # Auth to AWS using OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          group-to-assume: arn:aws:iam::${{ secrets.AWS_ACC_ID }}:role/${{ secrets.AWS_ROLE }}
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACC_ID }}:role/${{ secrets.AWS_ROLE }}
           aws-region: eu-west-2
       - name: Replace Name
         run: |
