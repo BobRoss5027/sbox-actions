@@ -35,9 +35,8 @@ def lambda_handler(event, context):
     'X-GitHub-Api-Version': '2022-11-28',
     'Content-Type': 'application/x-www-form-urlencoded',
     }
-    
-    acc_input=json.loads(event['input'])
-    # print(acc_name['first_name'])
+
+    acc_input=event['input']
 
     data = '{"event_type":"remove_role","client_payload":{"acc_name":"'+acc_input['username']+'", "acc_role":"'+acc_input['role']+'","test_success":false,"message":"Test message payload","aws_acc":1234567890,"sec_test":"This is a Secret"}}'
 

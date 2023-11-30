@@ -1,3 +1,7 @@
 {
-    "input": "{\"username\" : \"item1\", \"role\" : \"item2\", \"seconds\" : \"item3\"}"
+    "input": {
+        "username": "item1",
+        "role": "item2",
+        "seconds": "item3"
+    }
 }

@@ -58,7 +58,7 @@ jobs:
           aws-region: eu-west-2
       - name: Update Json
         run: |
-          cat template_req.json | sed -e 's/item1/${{ inputs.name }}/' -e 's/item2/${{ matrix.groups }}/' -e 's/item3/${{ inputs.duration }}/'> input.json
+          cat template_req.json | sed -e 's/item1/${{ inputs.name }}/' -e 's/item2/${{ matrix.groups }}/' -e 's/"item3"/${{ inputs.duration }}/'> input.json
           echo $( cat input.json )
       - name: Execute AWS StepFunction
         run: aws stepfunctions start-execution --state-machine-arn arn:aws:states:eu-west-2:335840475404:stateMachine:jit-test-state-eoin --name actions-test-exec --input file://input.json
