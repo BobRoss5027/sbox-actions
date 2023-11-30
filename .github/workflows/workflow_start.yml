@@ -52,23 +52,9 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACC_ID }}:role/${{ secrets.AWS_ROLE }}
           aws-region: eu-west-2
-      # - name: Replace Name
-      #   run: |
-      #     old=$( cat input.json )
-      #     replace=${{ inputs.name }}
-      #     new=${old/item1/$replace}
-      #     echo $old $new
-      #     echo $new > input.json
-      # - name: Replace group
-      #   run: |
-      #     old=$( cat input.json )
-      #     replace=${{ matrix.groups }}
-      #     new=${old/item2/$replace}
-      #     echo $old $new
-      #     echo $new > input.json
       - name: Update Json
         run: |
           cat template_req.json | sed -e 's/item1/${{ inputs.name }}/' -e 's/item2/${{ matrix.groups }}/' > input.json
           echo $( cat input.json )
-      # - name: Execute AWS StepFunction
-      #   run: aws stepfunctions start-execution --state-machine-arn arn:aws:states:eu-west-2:335840475404:stateMachine:jit-test-state-eoin --name actions-test-exec --input file://input.json
+      - name: Execute AWS StepFunction
+        run: aws stepfunctions start-execution --state-machine-arn arn:aws:states:eu-west-2:335840475404:stateMachine:jit-test-state-eoin --name actions-test-exec --input file://input.json
